@@ -16,6 +16,9 @@ class CreateLendingsTable extends Migration
         Schema::create('lendings', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->date('return_date');
+            $table->foreignId('user_id');
+            $table->foreignId('book_id');
         });
     }
 
