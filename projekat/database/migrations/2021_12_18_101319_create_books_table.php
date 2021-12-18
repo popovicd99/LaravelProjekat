@@ -19,7 +19,6 @@ class CreateBooksTable extends Migration
             $table->text('description');
             $table->string('author');
             $table->timestamps();
-            $table->foreignId('lending_id');
         });
     }
 
