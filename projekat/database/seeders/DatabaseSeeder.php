@@ -27,14 +27,14 @@ class DatabaseSeeder extends Seeder
         $cat3 = Category::factory()->create();
 
         $book = Book::factory()->create([
-            'categorie_id'=>$cat1
+            'category_id'=>$cat1
         ]);
         $book1 = Book::factory()->create([
-            'categorie_id'=>$cat2
+            'category_id'=>$cat2
         ]);
         
         Book::factory(3)->create([
-            'categorie_id'=>$cat3
+            'category_id'=>$cat3
         ]);
         $user = User::factory()->create();
 

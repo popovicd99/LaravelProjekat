@@ -19,7 +19,7 @@ class BookFactory extends Factory
             'title'=>$this->faker->words(rand(1,3),true),
             'description'=>$this->faker->sentences(rand(2,4),true),
             'author'=>$this->faker->name(),
-            'categorie_id'=>Category::factory()
+            'category_id'=>Category::factory()
         ];
     }
 }
