@@ -11,7 +11,7 @@ class Book extends Model
 
     public function lending()
     {
-        return $this->belongsTo(Lending::class);
+        return $this->hasOne(Lending::class);
     }
 
     public function category()
