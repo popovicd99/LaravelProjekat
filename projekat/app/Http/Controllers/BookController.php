@@ -13,4 +13,8 @@ class BookController extends Controller
         $books = Book::all();
         return BookResource::collection($books);
     }
+    public function show(Book $book)
+    {
+        return new BookResource($book);
+    }
 }

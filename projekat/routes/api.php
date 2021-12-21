@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\CategoryBookController;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\LendingController;
 use App\Http\Controllers\UserController;
@@ -22,7 +24,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('user',UserController::class)->only('index');
-Route::resource('book',BookController::class)->only('index');
-Route::resource('lending',LendingController::class)->only('index');
-Route::resource('user.lendings',UserLendingController::class)->only('index');
+Route::resource('user',UserController::class)->only('index','show');
+Route::resource('book',BookController::class)->only('index','show');
+Route::resource('category.book',CategoryBookController::class)->only('index');
+
+Route::post('register',[AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
+
+Route::group(['middleware'=>['auth:sanctum']],function(){
+    Route::get('profile',function(Request $request){
+        return auth()->user();
+    });
+    Route::resource('lending',LendingController::class)->only('index','update','store','destroy');
+    Route::resource('user.lendings',UserLendingController::class)->only('index');
+    Route::post('logout',[AuthController::class,'logout']);
+});
+
+
+
+
